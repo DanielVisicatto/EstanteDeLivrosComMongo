@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Driver;
 
 namespace EstanteDeLivros.Database
@@ -6,6 +7,7 @@ namespace EstanteDeLivros.Database
     internal class LivroDB
     {
         [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
         public Object Id { get; set; }
 
         [BsonElement("Titulo")]
@@ -43,13 +45,13 @@ namespace EstanteDeLivros.Database
         public override string ToString()
         {
             return $"--------------------------------------------------\n" +
-                     $"Book information:\n\n" +
-                     $"Titulo: {Titulo}\n" +
-                     $"Autor(es): {Autores}\n" +
-                     $"Edição: {Editora}\n" +
-                     $"ISBN: {ISBN}\n" +
-                     $"Estado: {Lido}\n" +
-                     $"--------------------------------------------------\n";
+                    $"Book information:\n\n" +
+                    $"Titulo: {Titulo}\n" +
+                    $"Autor(es): {Autores}\n" +
+                    $"Edição: {Editora}\n" +
+                    $"ISBN: {ISBN}\n" +
+                    $"Estado: {Lido}\n" +
+                    $"--------------------------------------------------\n";
         }
     }
 
