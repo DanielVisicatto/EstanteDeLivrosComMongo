@@ -8,7 +8,7 @@ namespace EstanteDeLivros.Database
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public Object Id { get; set; }
+        public string Id { get; set; }
 
         [BsonElement("Titulo")]
         public string? Titulo { get; set; }
@@ -25,7 +25,13 @@ namespace EstanteDeLivros.Database
         public string? ISBN { get; set; }
 
         [BsonElement("JaLido")]
+        [BsonRepresentation(BsonType.Boolean)]
         public bool Lido { get; set; }
+
+        public LivroDB()
+        {
+        }
+                
 
         public LivroDB(string? titulo, string? autores, string? editora, string? iSBN, bool lido)
         {           
@@ -45,13 +51,14 @@ namespace EstanteDeLivros.Database
         public override string ToString()
         {
             return $"--------------------------------------------------\n" +
-                    $"Book information:\n\n" +
-                    $"Titulo: {Titulo}\n" +
-                    $"Autor(es): {Autores}\n" +
-                    $"Edição: {Editora}\n" +
-                    $"ISBN: {ISBN}\n" +
-                    $"Estado: {Lido}\n" +
-                    $"--------------------------------------------------\n";
+                   $"Informações do Livro:\n" +
+                   $"--------------------------------------------------\n" +
+                   $"Titulo: {Titulo}\n" +
+                   $"Autor(es): {Autores}\n" +
+                   $"Edição: {Editora}\n" +
+                   $"ISBN: {ISBN}\n" +
+                   $"Estado: {Lido}\n" +
+                   $"--------------------------------------------------\n";
         }
     }
 
